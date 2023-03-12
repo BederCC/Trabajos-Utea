@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>glosary</title>
+    </head>
+    <body>
+        <p>
+            <strong>Alienacion:</strong>perdida de la personalidad o identidad de la persona.
+        </p>    
+        <p>
+            <strong>Hambriento:</strong>persona que tiene hambre.
+        </p>
+        <p>
+            <strong>Ansioso:</strong>persona deseosa de algo.
+        </p>
+        <p>
+            hoy conoci a alguien <strong>hambriento</strong>, <strong>ansioso</strong> alguien totalmente <strong>alienado</strong> por el hambre.
+        </p>
+    </body>
+</html>
