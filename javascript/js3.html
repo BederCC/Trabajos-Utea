@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laborable</title>
+  </head>
+  <body>
+    <h1>Día Laborable o No</h1>
+
+  <input type="number" id="numeroInput" placeholder="Ingrese un número del 1 al 7">
+  <button onclick="verificarDia()">Verificar</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function verificarDia() {
+      var numero = document.getElementById("numeroInput").value;
+      numero = parseInt(numero);
+
+      var esLaborable = false;
+      var mensaje = "";
+
+      if (numero >= 1 && numero <= 5) {
+        esLaborable = true;
+        mensaje = "Es un día laborable.";
+      } else if (numero === 6 || numero === 7) {
+        esLaborable = false;
+        mensaje = "No es un día laborable.";
+      } else {
+        mensaje = "Solo se permite numeros del 1 al 7!";
+      }
+
+      var resultadoElemento = document.getElementById("resultado");
+      resultadoElemento.textContent = mensaje;
+    }
+  </script>
+    </script>
+  </body>
+</html>
+
+
+<!-- con bootstrap -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laborable</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .fade-in {
+      animation: fade-in 0.5s ease-in-out;
+    }
+    .alert{
+      top: 20px;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Día Laborable o No</h1>
+    <div class="input-group">
+      <input type="number" id="numeroInput" class="form-control" placeholder="Ingrese un número del 1 al 7">
+      <div class="input-group-append">
+        <button class="btn btn-primary" onclick="verificarDia()">Verificar</button>
+      </div>
+    </div>
+    <div id="resultado" class="text-center"></div>
+  </div>
+  <script>
+    function verificarDia() {
+      var numero = document.getElementById("numeroInput").value;
+      numero = parseInt(numero);
+
+      var esLaborable = false;
+      var mensaje = "";
+
+      if (numero >= 1 && numero <= 5) {
+        esLaborable = true;
+        mensaje = "Es un día laborable.";
+        mostrarAlerta("success", mensaje);
+      } else if (numero === 6 || numero === 7) {
+        esLaborable = false;
+        mensaje = "No es un día laborable.";
+        mostrarAlerta("danger", mensaje);
+      } else {
+        mensaje = "Solo se permite números del 1 al 7!";
+        mostrarAlerta("warning", mensaje);
+      }
+    }
+
+    function mostrarAlerta(tipo, mensaje) {
+      var alerta = document.getElementById("resultado");
+      alerta.innerHTML = `
+        <div class="alert alert-${tipo} fade-in" role="alert">
+          ${mensaje}
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html> -->

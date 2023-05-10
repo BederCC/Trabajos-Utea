@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora MCD con Bootstrap</title>
+  <script>
+    function calcularMCD() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var num3 = parseInt(document.getElementById('num3').value);
+
+      var mcd = 1;
+      var menor = Math.min(num1, num2, num3);
+
+      for (var i = 2; i <= menor; i++) {
+        if (num1 % i === 0 && num2 % i === 0 && num3 % i === 0) {
+          mcd = i;
+        }
+      }
+
+      document.getElementById('resultado').innerHTML = 'El MCD es: ' + mcd;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora MCD</h1>
+    <div class="form-group">
+      <label for="num1">Número 1:</label>
+      <input type="number" class="form-control" id="num1" />
+    </div>
+    <div class="form-group">
+      <label for="num2">Número 2:</label>
+      <input type="number" class="form-control" id="num2" />
+    </div>
+    <div class="form-group">
+      <label for="num3">Número 3:</label>
+      <input type="number" class="form-control" id="num3" />
+    </div>
+    <button class="btn btn-primary" onclick="calcularMCD()">Calcular MCD</button>
+    <div id="resultado"></div>
+  </div>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora MCD con Bootstrap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function calcularMCD() {
+      var num1 = parseInt(document.getElementById('num1').value);
+      var num2 = parseInt(document.getElementById('num2').value);
+      var num3 = parseInt(document.getElementById('num3').value);
+
+      var mcd = 1;
+      var menor = Math.min(num1, num2, num3);
+
+      for (var i = 2; i <= menor; i++) {
+        if (num1 % i === 0 && num2 % i === 0 && num3 % i === 0) {
+          mcd = i;
+        }
+      }
+
+      document.getElementById('resultado').innerHTML = 'El MCD es: ' + mcd;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora MCD</h1>
+    <div class="form-group">
+      <label for="num1">Número 1:</label>
+      <input type="number" class="form-control" id="num1" />
+    </div>
+    <div class="form-group">
+      <label for="num2">Número 2:</label>
+      <input type="number" class="form-control" id="num2" />
+    </div>
+    <div class="form-group">
+      <label for="num3">Número 3:</label>
+      <input type="number" class="form-control" id="num3" />
+    </div>
+    <button class="btn btn-primary" onclick="calcularMCD()">Calcular MCD</button>
+    <div id="resultado"></div>
+  </div>
+</body>
+</html> -->

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Dígitos Pares e Impares</h1>
+
+  <input type="number" id="numeroInput" placeholder="Ingrese un número">
+  <button onclick="contarDigitos()">Contar Dígitos</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function contarDigitos() {
+      var numero = document.getElementById("numeroInput").value;
+      numero = parseInt(numero);
+
+      var digitosPares = 0;
+      var digitosImpares = 0;
+
+      while (numero > 0) {
+        var digito = numero % 10;
+        if (digito % 2 === 0) {
+          digitosPares++;
+        } else {
+          digitosImpares++;
+        }
+        numero = Math.floor(numero / 10);
+      }
+
+      var resultadoElemento = document.getElementById("resultado");
+      resultadoElemento.textContent = "Dígitos pares: " + digitosPares + ", Dígitos impares: " + digitosImpares;
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- con bootstrap -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dígitos Pares e Impares</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .fade-in {
+      animation: fade-in 0.5s ease-in-out;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dígitos Pares e Impares</h1>
+    <div class="input-group">
+      <input type="number" id="numeroInput" class="form-control" placeholder="Ingrese un número">
+      <div class="input-group-append">
+        <button class="btn btn-primary" onclick="contarDigitos()">Contar Dígitos</button>
+      </div>
+    </div>
+    <div id="resultado" class="text-center"></div>
+  </div>
+  <script>
+    function contarDigitos() {
+      var numero = document.getElementById("numeroInput").value;
+      numero = parseInt(numero);
+
+      var digitosPares = 0;
+      var digitosImpares = 0;
+
+      while (numero > 0) {
+        var digito = numero % 10;
+        if (digito % 2 === 0) {
+          digitosPares++;
+        } else {
+          digitosImpares++;
+        }
+        numero = Math.floor(numero / 10);
+      }
+
+      var resultadoElemento = document.getElementById("resultado");
+      resultadoElemento.innerHTML = `
+        <div class="alert alert-success fade-in" role="alert">
+          Dígitos pares: ${digitosPares}
+        </div>
+        <div class="alert alert-danger fade-in" role="alert">
+          Dígitos impares: ${digitosImpares}
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html> -->

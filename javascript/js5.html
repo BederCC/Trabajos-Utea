@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Ventas</title>
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Registro de Ventas</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVentas"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block" onclick="agregarProducto()">Agregar Producto</button>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <p id="totalVenta" class="text-center"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var ventas = []; // Arreglo para almacenar los productos y precios
+    var totalVenta = 0; // Variable para almacenar el total de la venta
+
+    function agregarProducto() {
+      var producto = prompt("Ingrese el nombre del producto:");
+      var precio = parseFloat(prompt("Ingrese el precio del producto:"));
+
+      if (producto === "" || isNaN(precio)) {
+        alert("Ingrese un producto válido y su precio.");
+        return;
+      }
+
+      ventas.push({ producto: producto, precio: precio }); // Agregar producto y precio al arreglo
+
+      mostrarTablaVentas();
+      calcularTotalVenta();
+
+      var agregarMas = confirm("¿Desea agregar más productos?");
+      if (agregarMas) {
+        agregarProducto(); // Llamar recursivamente para agregar más productos
+      } else {
+        mostrarTotalVenta();
+      }
+    }
+
+    function mostrarTablaVentas() {
+      var tabla = document.getElementById("tablaVentas");
+
+      // Limpiar tabla
+      while (tabla.firstChild) {
+        tabla.firstChild.remove();
+      }
+
+      // Agregar filas a la tabla con los productos y precios
+      ventas.forEach(function(venta) {
+        var fila = document.createElement("tr");
+        var celdaProducto = document.createElement("td");
+        var celdaPrecio = document.createElement("td");
+
+        celdaProducto.textContent = venta.producto;
+        celdaPrecio.textContent = "S/ " + venta.precio.toFixed(2); // Agregar el símbolo de soles y formatear a 2 decimales
+
+        fila.appendChild(celdaProducto);
+        fila.appendChild(celdaPrecio);
+        tabla.appendChild(fila);
+      });
+    }
+
+    function calcularTotalVenta() {
+      totalVenta = 0;
+
+      ventas.forEach(function(venta) {
+        totalVenta += venta.precio;
+      });
+    }
+
+    function mostrarTotalVenta() {
+      var totalVentaElement = document.getElementById("totalVenta");
+      totalVentaElement.textContent = "Total de la venta del día: S/ " + totalVenta.toFixed(2); // Agregar el símbolo de soles y formatear a 2 decimales
+    }
+  </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Ventas</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Registro de Ventas</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVentas"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block" onclick="agregarProducto()">Agregar Producto</button>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <p id="totalVenta" class="text-center"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var ventas = []; // Arreglo para almacenar los productos y precios
+    var totalVenta = 0; // Variable para almacenar el total de la venta
+
+    function agregarProducto() {
+      var producto = prompt("Ingrese el nombre del producto:");
+      var precio = parseFloat(prompt("Ingrese el precio del producto:"));
+
+      if (producto === "" || isNaN(precio)) {
+        alert("Ingrese un producto válido y su precio.");
+        return;
+      }
+
+      ventas.push({ producto: producto, precio: precio }); // Agregar producto y precio al arreglo
+
+      mostrarTablaVentas();
+      calcularTotalVenta();
+
+      var agregarMas = confirm("¿Desea agregar más productos?");
+      if (agregarMas) {
+        agregarProducto(); // Llamar recursivamente para agregar más productos
+      } else {
+        mostrarTotalVenta();
+      }
+    }
+
+    function mostrarTablaVentas() {
+      var tabla = document.getElementById("tablaVentas");
+
+      // Limpiar tabla
+      while (tabla.firstChild) {
+        tabla.firstChild.remove();
+      }
+
+      // Agregar filas a la tabla con los productos y precios
+      ventas.forEach(function(venta) {
+        var fila = document.createElement("tr");
+        var celdaProducto = document.createElement("td");
+        var celdaPrecio = document.createElement("td");
+
+        celdaProducto.textContent = venta.producto;
+        celdaPrecio.textContent = "S/ " + venta.precio.toFixed(2); // Agregar el símbolo de soles y formatear a 2 decimales
+
+        fila.appendChild(celdaProducto);
+        fila.appendChild(celdaPrecio);
+        tabla.appendChild(fila);
+      });
+    }
+
+    function calcularTotalVenta() {
+      totalVenta = 0;
+
+      ventas.forEach(function(venta) {
+        totalVenta += venta.precio;
+      });
+    }
+
+    function mostrarTotalVenta() {
+      var totalVentaElement = document.getElementById("totalVenta");
+      totalVentaElement.textContent = "Total de la venta del día: S/ " + totalVenta.toFixed(2); // Agregar el símbolo de soles y formatear a 2 decimales
+    }
+  </script>
+</body>
+</html> -->
